@@ -1,6 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+let isbnlist=[];
 function getIsbn(userid) {
     let isbns = [];
     axios.get("http://localhost:8080/allIsbn").then(response => {
@@ -19,7 +20,8 @@ function getIsbn(userid) {
                 alert("no registered user")
             }
             else {
-                alert(isbns);
+                isbnlist=[...isbns]
+                console.log(isbnlist);
             }
         }
     }).catch(err => console.log(err))
@@ -73,7 +75,7 @@ function login() {
 
     // postIsbn("123444", 125)
     //delIsbn("123444", 125)
-    //getIsbn(123);
+    getIsbn(124);
     if (email == "" || !regEmail.test(email)) {
         alert("Please enter a valid e-mail address.");
         return;
